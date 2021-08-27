@@ -24,15 +24,15 @@ for (let rank in ranks) {
 
 
 const IDler = {
-  botID: "745273648805445673",
-  botSecret: "agH1QeOg6nKYUdYF_Hp2Z1icgiNoxuyX",
+  botID: "873023119760179200",
+  botSecret: "aWWQr86crcqXG4CAtMxGujOAJ82IS9e1",
   botCallbackURL: "https://code-paysim-sitesi.glitch.me/callback",
-  sunucuID: "765222160360144956",
-  sunucuDavet: "https://discord.gg/wdC62b5",
-  kodLogKanalı: "765467086150959106",
-  sahipRolü: "765467130963165194",
-  adminRolü: "765467130963165194",
-  kodPaylaşımcıRolü: "765467564523782185",
+  sunucuID: "857802159710404609",
+  sunucuDavet: "https://discord.gg/77wvvV2Fk5",
+  kodLogKanalı: "870865228664021002",
+  sahipRolü: "858068676102848512",
+  adminRolü: "858068669543088139",
+  kodPaylaşımcıRolü: "862085946726809620",
   boosterRolü: "765467131553775627",
   kodPaylaşamayacakRoller: ["765467283899547668", "765467283899547668"],
   hazırAltyapılarRolü: "765467132481241108",
@@ -40,7 +40,7 @@ const IDler = {
   sistemlerrolü: "765467132481241108",
   elmasKodlarRolü: "765467133102391347",
   altınKodlarRolü: "765467136456917003",
-  normalKodlarRolü: "765467138285633536"
+  normalKodlarRolü: "862085946726809620"
 };
 
 const app = express();
