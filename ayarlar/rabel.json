@@ -1,3 +1,6 @@
 {
-  "rabeltoken": "ODczMDIzMTE5NzYwMTc5MjAw.YQyYIw.UDt8AAMLvtKAgcH1Yxmljor3jLI"
+  "rabeltoken": pr "ODczMDIzMTE5NzYwMTc5MjAw.YQyYIw.UDt8AAMLvtKAgcH1Yxmljor3jLI"
 }
+
+
+Token: process.env.Token || "",
