@@ -36,7 +36,7 @@ const IDler = {
   boosterRolü: "765467131553775627",
   kodPaylaşamayacakRoller: ["765467283899547668", "765467283899547668"],
   hazırAltyapılarRolü: "765467132481241108",
-  hazırSistemlerRolü: "765467132481241108",
+  altyapiSistemlerRolü: "765467132481241108",
   sistemlerrolü: "765467132481241108",
   htmlKodlarRolü: "862085946726809620",
   bdfdKodlarRolü: "862085946726809620",
@@ -402,15 +402,15 @@ app.get("/sistemler/:id", (req, res) => {
     res.redirect("/");
   }
 });
-app.get("/hazir", (req, res) => {
+app.get("/altyapi", (req, res) => {
   var data = db.hazir.get("kodlar");
   data = sortData(data);
-  res.render("hazir", {
+  res.render("altyapi", {
     user: req.user,
     kodlar: data
   });
 });
-app.get("/hazir/:id", (req, res) => {
+app.get("/altyapi/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -428,14 +428,14 @@ app.get("/hazir/:id", (req, res) => {
 
   var id = req.params.id;
   if (!id) req.redirect("/");
-  let data = db.hazir.get("kodlar");
+  let data = db.altyapi.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
     let guild = client.guilds.cache.get(IDler.sunucuID);
     let member = req.user ? guild.members.cache.get(req.user.id) : null;
     if (
       member &&
-      (member.roles.cache.has(IDler.hazırSistemlerRolü) ||
+      (member.roles.cache.has(IDler.altyapiSistemlerRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
@@ -778,3 +778,7 @@ client.on("ready", () => {
     console.log("Proje Hazır!");
   });
 });
+
+client.on("ready", () => {
+  client.channels.cache.get('857812974806892545').join();//Hangi Ses Kanalın Gircekse o ses kanalının id sini gir
+  });
