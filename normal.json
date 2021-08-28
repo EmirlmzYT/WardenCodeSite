@@ -1504,6 +1504,23 @@
                 "kod_rank": "normal",
                 "k_adi": "ilbey",
                 "date": "8/20/2020"
+            },
+            "Denemedhkffl": {
+                "isim": "Denemedhkffl",
+                "id": "SKmoa2vEX6",
+                "desc": "Açıklama",
+                "modules": [
+                    "emir",
+                    "fpk",
+                    "falan",
+                    "filan"
+                ],
+                "icon": "https://cdn.discordapp.com/avatars/611846254040842255/a_b2a16dc368356f7293bf153413ee52ba.png",
+                "main_code": "AYNEN",
+                "komutlar_code": "Aynen2",
+                "kod_rank": "normal",
+                "k_adi": "Emirlmz",
+                "date": "8/28/2021"
             }
         }
     }
