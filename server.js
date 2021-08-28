@@ -17,7 +17,7 @@ const client = new Discord.Client();
 const randomString = require("random-string");
 const db = (global.db = {});
 
-let ranks = ["normal", "altin", "elmas", "hazir","sistemler", "topluluk", "api"];
+let ranks = ["javascript", "bdfd", "html", "hazir","sistemler", "topluluk", "api"];
 for (let rank in ranks) {
   db[ranks[rank]] = new bookman(ranks[rank]);
 }
@@ -26,7 +26,7 @@ for (let rank in ranks) {
 const IDler = {
   botID: "873023119760179200",
   botSecret: "aWWQr86crcqXG4CAtMxGujOAJ82IS9e1",
-  botCallbackURL: "https://kodpaylasimsitesi-emirlmz.glitch.me/callback",
+  botCallbackURL: "https://wardencode.glitch.me/callback",
   sunucuID: "857802159710404609",
   sunucuDavet: "https://discord.gg/77wvvV2Fk5",
   kodLogKanalı: "870865228664021002",
@@ -38,9 +38,9 @@ const IDler = {
   hazırAltyapılarRolü: "765467132481241108",
   hazırSistemlerRolü: "765467132481241108",
   sistemlerrolü: "765467132481241108",
-  elmasKodlarRolü: "765467133102391347",
-  altınKodlarRolü: "765467136456917003",
-  normalKodlarRolü: "862085946726809620"
+  htmlKodlarRolü: "862085946726809620",
+  bdfdKodlarRolü: "862085946726809620",
+  javascriptKodlarRolü: "862085946726809620"
 };
 
 const app = express();
