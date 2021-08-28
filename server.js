@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const handlebarshelpers = require("handlebars-helpers")();
 const path = require("path");
 const fs = require('fs');
-const rabel = require("./ayarlar/rabel.json");
+const token = require("./server.js");
 const passport = require("passport");
 const { Strategy } = require("passport-discord");
 const session = require("express-session");
@@ -769,7 +769,7 @@ app.use((req, res) => {
   );
 });
 
-client.login(rabel.rabeltoken);
+client.login(process.env.token);
 
 
 client.on("ready", () => {
@@ -778,5 +778,3 @@ client.on("ready", () => {
     console.log("Proje Hazır!");
   });
 });
-
-
