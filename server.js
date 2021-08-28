@@ -774,7 +774,7 @@ client.login(rabel.rabeltoken);
 
 client.on("ready", () => {
   const listener = app.listen(process.env.PORT, function() {
-    client.user.setActivity(`www.wardencode.xyz`, { type:"WATCHING" })
+    client.user.setActivity(`www.wardencode.glitch.me`, { type:"WATCHING" })
     console.log("Proje Hazır!");
   });
 });
