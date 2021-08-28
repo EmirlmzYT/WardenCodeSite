@@ -131,11 +131,11 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/normal", (req, res) => {
+app.get("/javascript", (req, res) => {
   var data = db.normal.get("kodlar");
   data = sortData(data);
       
-  res.render("normal", {
+  res.render("javascript", {
     user: req.user,
     kodlar: data
   });
