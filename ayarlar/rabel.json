@@ -1,4 +1,3 @@
-{
-"rabeltoken": ""
-
+module.exports = {
+  rabeltoken: process.env.token || "",
 }
