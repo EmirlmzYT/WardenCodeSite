@@ -132,7 +132,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/javascript", (req, res) => {
-  var data = db.normal.get("kodlar");
+  var data = db.javascript.get("kodlar");
   data = sortData(data);
       
   res.render("javascript", {
@@ -140,7 +140,7 @@ app.get("/javascript", (req, res) => {
     kodlar: data
   });
 });
-app.get("/normal/:id", (req, res) => {
+app.get("/javascript/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -158,7 +158,7 @@ app.get("/normal/:id", (req, res) => {
 
   var id = req.params.id;
   if (!id) req.redirect("/");
-  let data = db.normal.get("kodlar");
+  let data = db.javascript.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
     res.render("kod", {
@@ -169,15 +169,15 @@ app.get("/normal/:id", (req, res) => {
     res.redirect("/");
   }
 });
-app.get("/altin", (req, res) => {
-  var data = db.altin.get("kodlar");
+app.get("/bdfd", (req, res) => {
+  var data = db.bdfd.get("kodlar");
   data = sortData(data);
-  res.render("altin", {
+  res.render("bdfd", {
     user: req.user,
     kodlar: data
   });
 });
-app.get("/altin/:id", (req, res) => {
+app.get("/bdfd/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -195,14 +195,14 @@ app.get("/altin/:id", (req, res) => {
 
   var id = req.params.id;
   if (!id) req.redirect("/");
-  let data = db.altin.get("kodlar");
+  let data = db.bdfd.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
     let guild = client.guilds.cache.get(IDler.sunucuID);
     let member = req.user ? guild.members.cache.get(req.user.id) : null;
     if (
       member &&
-      (member.roles.cache.has(IDler.altınKodlarRolü) ||
+      (member.roles.cache.has(IDler.bdfdKodlarRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
@@ -227,15 +227,15 @@ app.get("/altin/:id", (req, res) => {
     res.redirect("/");
   }
 });
-app.get("/elmas", (req, res) => {
-  var data = db.elmas.get("kodlar");
+app.get("/html", (req, res) => {
+  var data = db.html.get("kodlar");
   data = sortData(data);
-  res.render("elmas", {
+  res.render("html", {
     user: req.user,
     kodlar: data
   });
 });
-app.get("/elmas/:id", (req, res) => {
+app.get("/html/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -253,14 +253,14 @@ app.get("/elmas/:id", (req, res) => {
 
   var id = req.params.id;
   if (!id) req.redirect("/");
-  let data = db.elmas.get("kodlar");
+  let data = db.html.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
     let guild = client.guilds.cache.get(IDler.sunucuID);
     let member = req.user ? guild.members.cache.get(req.user.id) : null;
     if (
       member &&
-      (member.roles.cache.has(IDler.elmasKodlarRolü) ||
+      (member.roles.cache.has(IDler.htmlKodlarRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
