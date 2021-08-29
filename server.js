@@ -37,7 +37,7 @@ const IDler = {
   kodPaylaşamayacakRoller: ["765467283899547668", "765467283899547668"],
   altyapiRolü: "765467132481241108",
   hazırSistemlerRolü: "765467132481241108",
-  sistemlerrolü: "765467132481241108",
+  plugincevirisrolü: "765467132481241108",
   htmlKodlarRolü: "862085946726809620",
   bdfdKodlarRolü: "862085946726809620",
   javascriptKodlarRolü: "862085946726809620"
@@ -365,10 +365,10 @@ app.get("/plugincevirisi/:id", (req, res) => {
     res.redirect("/");
   }
 });
-app.get("/plugincevirisi", (req, res) => {
-  var data = db.plugincevirisi.get("kodlar");
+app.get("/hazırsistemler",(req, res) => {
+  var data = db.hazırsistemler.get("kodlar");
   data = sortData(data);
-  res.render("plugincevirisi", {
+app.get("hazırsistemler", {
     user: req.user,
     kodlar: data
   });
