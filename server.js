@@ -656,7 +656,7 @@ app.get("/paylas", (req, res) => {
         query: {
           statuscode: 138,
           message:
-            "Kod paylaşabilmek için Discord sunucumuza katılmanız ve siteye giriş yapmanız gerekmektedir."
+            'Kod paylaşabilmek için Discord sunucumuza katılmanız ve siteye giriş yapmanız gerekmektedir.[Tıkla!](https://wardencode.glitch.me/)"
         }
       })
     );
@@ -722,7 +722,7 @@ app.post("/paylasim", (req, res) => {
     .setTimestamp()
     .setAuthor("Bir Kod Paylaşıldı!",client.user.avatarURL)
     .addField("Kod Bilgileri",`**Adı:** ${obj.isim} \n**Açıklaması:** ${obj.desc} \n**Değeri:** ${obj.kod_rank} \n**Paylaşan:** ${obj.k_adi}`)
-    .addField("Kod Sayfası", `[Tıkla!](https://rabelcode.glitch.me/${obj.kod_rank}/${obj.id})`));
+    .addField("Kod Sayfası", `[Tıkla!](https://wardencode.glitch.me/${obj.kod_rank}/${obj.id})`));
   res.redirect(`/${obj.kod_rank}/${obj.id}`);
 });
 
