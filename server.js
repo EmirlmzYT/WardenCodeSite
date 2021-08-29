@@ -161,6 +161,16 @@ app.get("/javascript/:id", (req, res) => {
   let data = db.javascript.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
+     let guild = client.guilds.cache.get(IDler.sunucuID);
+    let member = req.user ? guild.members.cache.get(req.user.id) : null;
+    if (
+      member &&
+      (member.roles.cache.has(IDler.bdfdKodlarRolü) ||
+        member.roles.cache.has(IDler.boosterRolü) ||
+        member.roles.cache.has(IDler.sahipRolü) ||
+        member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
+        member.roles.cache.has(IDler.adminRolü))
+    ) {
     res.render("kod", {
       user: req.user,
       kod: code
@@ -402,15 +412,15 @@ app.get("/sistemler/:id", (req, res) => {
     res.redirect("/");
   }
 });
-app.get("/hazır", (req, res) => {
+app.get("/hazir", (req, res) => {
   var data = db.hazir.get("kodlar");
   data = sortData(data);
-  res.render("hazır", {
+  res.render("hazir", {
     user: req.user,
     kodlar: data
   });
 });
-app.get("/hazır/:id", (req, res) => {
+app.get("/hazir/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -428,14 +438,14 @@ app.get("/hazır/:id", (req, res) => {
 
   var id = req.params.id;
   if (!id) req.redirect("/");
-  let data = db.hazır.get("kodlar");
+  let data = db.hazir.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
     let guild = client.guilds.cache.get(IDler.sunucuID);
     let member = req.user ? guild.members.cache.get(req.user.id) : null;
     if (
       member &&
-      (member.roles.cache.has(IDler.hazırSistemlerRolü) ||
+      (member.roles.cache.has(IDler.hazirSistemlerRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
@@ -512,19 +522,26 @@ app.get("/profil/:id", (req, res) => {
     );
   else {
     let perms = {
-      altin:
+      javascript:
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.adminRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
-        member.roles.cache.has(IDler.altınKodlarRolü) ||
+        member.roles.cache.has(IDler.javascriptKodlarRolü) ||
         member.roles.cache.has(IDler.hazırSistemlerRolü),
-      elmas:
+      bdfd:
+        member.roles.cache.has(IDler.sahipRolü) ||
+        member.roles.cache.has(IDler.adminRolü) ||
+        member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
+        member.roles.cache.has(IDler.boosterRolü) ||
+        member.roles.cache.has(IDler.bdfdKodlarRolü) ||
+        member.roles.cache.has(IDler.hazırSistemlerRolü),
+      html:
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
-        member.roles.cache.has(IDler.elmasKodlarRolü) ||
+        member.roles.cache.has(IDler.htmlKodlarRolü) ||
         member.roles.cache.has(IDler.hazırSistemlerRolü),
       hazir:
         member.roles.cache.has(IDler.sahipRolü) ||
@@ -656,7 +673,7 @@ app.get("/paylas", (req, res) => {
         query: {
           statuscode: 138,
           message:
-            'Kod paylaşabilmek için Discord sunucumuza katılmanız ve siteye giriş yapmanız gerekmektedir.[Tıkla!](https://wardencode.glitch.me/)"
+            "Kod paylaşabilmek için Discord sunucumuza katılmanız ve siteye giriş yapmanız gerekmektedir."
         }
       })
     );
