@@ -13,25 +13,25 @@
         
         <div class="twPc-divStats">
         <ul class="twPc-Arrange">
-          <a href="/normal" style="text-decoration:none" class="index-button1"><i class="fas fa-code"></i> Normal Kodlar</a>
+          <a href="/javascript" style="text-decoration:none" class="index-button1"><i class="fas fa-code"></i> Normal Kodlar</a>
           {{#if perms.yetkili}}
-       <a href="/altin"  style="text-decoration:none" class="index-button2"><i class="fas fa-code"></i> Altın Kodlar</a>
-       <a href="/elmas" style="text-decoration:none" class="index-button3"><i class="fas fa-code"></i> Elmas Kodlar</a>
-       <a href="/hazir" style="text-decoration:none" class="index-button4"><i class="fas fa-code"></i> Hazır Sistemler</a>
+       <a href="/bdfd"  style="text-decoration:none" class="index-button2"><i class="fas fa-code"></i> Altın Kodlar</a>
+       <a href="/html" style="text-decoration:none" class="index-button3"><i class="fas fa-code"></i> Elmas Kodlar</a>
+       <a href="/altyapi" style="text-decoration:none" class="index-button4"><i class="fas fa-code"></i> Hazır Sistemler</a>
           {{else}}
             {{#if perms.destekçi}}
-            <a href="/altin"  style="text-decoration:none" class="index-button2"><i class="fas fa-code"></i> Altın Kodlar</a>
-            <a href="/elmas" style="text-decoration:none" class="index-button3"><i class="fas fa-code"></i> Elmas Kodlar</a>
-            <a href="/hazir" style="text-decoration:none" class="index-button4"><i class="fas fa-code"></i> Hazır Sistemler</a>
+            <a href="/bdfd"  style="text-decoration:none" class="index-button2"><i class="fas fa-code"></i> Altın Kodlar</a>
+            <a href="/html" style="text-decoration:none" class="index-button3"><i class="fas fa-code"></i> Elmas Kodlar</a>
+            <a href="/altyapi" style="text-decoration:none" class="index-button4"><i class="fas fa-code"></i> Hazır Sistemler</a>
             {{else}}
               {{#if perms.altin}}
-            <a href="/altin"  style="text-decoration:none" class="index-button2"><i class="fas fa-code"></i> Altın Kodlar</a>
+            <a href="/bdfd"  style="text-decoration:none" class="index-button2"><i class="fas fa-code"></i> Altın Kodlar</a>
               {{/if}}
               {{#if perms.elmas}}
-            <a href="/elmas" style="text-decoration:none" class="index-button3"><i class="fas fa-code"></i> Elmas Kodlar</a>
+            <a href="/html" style="text-decoration:none" class="index-button3"><i class="fas fa-code"></i> Elmas Kodlar</a>
               {{/if}}
               {{#if perms.hazir}}
-           <a href="/hazir" style="text-decoration:none" class="index-button4"><i class="fas fa-code"></i> Hazır Sistemler</a>
+           <a href="/altyapi" style="text-decoration:none" class="index-button4"><i class="fas fa-code"></i> Hazır Sistemler</a>
               {{/if}}
             {{/if}}
           {{/if}}  
@@ -44,7 +44,7 @@
             <span>Kod Paylaşım Yetkilisi</span>
           {{else}}
             {{#if perms.destekçi}}
-              <span>RabeL Code Destekçisi</span>
+              <span>Warden Code Destekçisi</span>
             {{else}}
               <span>Kullanıcı</span>
             {{/if}}
@@ -53,7 +53,10 @@
     </div>
         
         Paylaştığı Kodlar <font color="red">&</font> Yardım Ettiği Kodlar ( <font color="#0069d9">{{#if stats}} {{stats.paylasilan}} {{/if}} </font> )
-
+        </div>
+        Kullanıcı ID: {{member.user.id}}
+        <>
+        Kullanıcı Adı: {{member.user.username}}
   </div>
       </center>
 </div>
