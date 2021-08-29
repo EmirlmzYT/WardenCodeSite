@@ -17,7 +17,7 @@ const client = new Discord.Client();
 const randomString = require("random-string");
 const db = (global.db = {});
 
-let ranks = ["javascript", "bdfd", "html", "altyapi","plugincevirisi", "topluluk", "api"];
+let ranks = ["javascript", "bdfd", "html", "altyapi","pluginler", "hazir", "topluluk", "api"];
 for (let rank in ranks) {
   db[ranks[rank]] = new bookman(ranks[rank]);
 }
@@ -37,7 +37,7 @@ const IDler = {
   kodPaylaşamayacakRoller: ["765467283899547668", "765467283899547668"],
   altyapiRolü: "765467132481241108",
   hazırSistemlerRolü: "765467132481241108",
-  plugincevirisrolü: "765467132481241108",
+  pluginlerRolü: "765467132481241108",
   htmlKodlarRolü: "862085946726809620",
   bdfdKodlarRolü: "862085946726809620",
   javascriptKodlarRolü: "862085946726809620"
@@ -307,15 +307,15 @@ app.get("/html/:id", (req, res) => {
   }
 });
 
-app.get("/plugincevirisi", (req, res) => {
-  var data = db.plugincevirisi.get("kodlar");
+app.get("/pluginler", (req, res) => {
+  var data = db.pluginler.get("kodlar");
   data = sortData(data);
-  res.render("plugincevirisi", {
+  res.render("pluginler", {
     user: req.user,
     kodlar: data
   });
 });
-app.get("/plugincevirisi/:id", (req, res) => {
+app.get("/pluginler/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -333,14 +333,14 @@ app.get("/plugincevirisi/:id", (req, res) => {
 
   var id = req.params.id;
   if (!id) req.redirect("/");
-  let data = db.sistemler.get("kodlar");
+  let data = db.pluginler.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
     let guild = client.guilds.cache.get(IDler.sunucuID);
     let member = req.user ? guild.members.cache.get(req.user.id) : null;
     if (
       member &&
-      (member.roles.cache.has(IDler.plugincevirisirolü) ||
+      (member.roles.cache.has(IDler.pluginlerRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
@@ -373,7 +373,7 @@ app.get("hazırsistemler", {
     kodlar: data
   });
 });
-app.get("/plugincevirisi/:id", (req, res) => {
+app.get("/hazırsistemler/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -391,14 +391,14 @@ app.get("/plugincevirisi/:id", (req, res) => {
 
   var id = req.params.id;
   if (!id) req.redirect("/");
-  let data = db.plugincevirisi.get("kodlar");
+  let data = db.hazırsistemler.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
     let guild = client.guilds.cache.get(IDler.sunucuID);
     let member = req.user ? guild.members.cache.get(req.user.id) : null;
     if (
       member &&
-      (member.roles.cache.has(IDler.plugincevirisirolü) ||
+      (member.roles.cache.has(IDler.hazırSistemlerRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
@@ -554,13 +554,13 @@ app.get("/profil/:id", (req, res) => {
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.htmlKodlarRolü) ||
         member.roles.cache.has(IDler.hazırSistemlerRolü),
-      hazir:
+      plugincevirisi:
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.adminRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
-        member.roles.cache.has(IDler.hazırSistemlerRolü) ||
-        member.roles.cache.has(IDler.hazırAltyapılarRolü),
+        member.roles.cache.has(IDler.plugincevirisiRolü) ||
+        member.roles.cache.has(IDler.hazırSistemlerRolü),
       destekçi: member.roles.cache.has(IDler.boosterRolü),
       yetkili:
         member.roles.cache.has(IDler.sahipRolü) ||
