@@ -59,8 +59,8 @@ app.use(cookieParser());
 app.engine(
   "handlebars",
   handlebars({
-    defaultLayout: "bakim",
-    layoutsDir: `${__dirname}/views/`,
+    defaultLayout: "main",
+    layoutsDir: `${__dirname}/views/layouts/`,
     helpers: handlebarshelpers
   })
 );
