@@ -145,6 +145,20 @@
                 "kod_rank": "altin",
                 "k_adi": "`TosunPasa",
                 "date": "8/16/2020"
+            },
+            "BDFD DENEME": {
+                "isim": "BDFD DENEME",
+                "id": "N2siUHjZqK",
+                "desc": "Açıklama işte kankam",
+                "modules": [
+                    "Bdfd"
+                ],
+                "icon": "https://cdn.discordapp.com/avatars/611846254040842255/a_b2a16dc368356f7293bf153413ee52ba.png",
+                "main_code": "Sallama",
+                "komutlar_code": "Salladım",
+                "kod_rank": "bdfd",
+                "k_adi": "Emirlmz",
+                "date": "8/29/2021"
             }
         }
     }
