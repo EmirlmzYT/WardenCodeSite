@@ -1,12 +1,12 @@
 {
-  "name": "GweepCreative",
+  "name": "WardenCode",
   "version": "0.0.1",
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "barbarbar338, yashinu, alosha, Loz 'Bey",
+  "author": "Emirlmz",
   "dependencies": {
     "body-parser": "^1.19.0",
     "bookman": "^1.6.4",
