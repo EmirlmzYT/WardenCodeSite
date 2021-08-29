@@ -17,7 +17,7 @@ const client = new Discord.Client();
 const randomString = require("random-string");
 const db = (global.db = {});
 
-let ranks = ["javascript", "bdfd", "html", "hazir","sistemler", "topluluk", "api"];
+let ranks = ["javascript", "bdfd", "html", "altyapi","plugincevirisi", "topluluk", "api"];
 for (let rank in ranks) {
   db[ranks[rank]] = new bookman(ranks[rank]);
 }
@@ -307,15 +307,15 @@ app.get("/html/:id", (req, res) => {
   }
 });
 
-app.get("/sistemler", (req, res) => {
-  var data = db.sistemler.get("kodlar");
+app.get("/plugincevirisi", (req, res) => {
+  var data = db.plugincevirisi.get("kodlar");
   data = sortData(data);
-  res.render("sistemler", {
+  res.render("plugincevirisi", {
     user: req.user,
     kodlar: data
   });
 });
-app.get("/sistemler/:id", (req, res) => {
+app.get("/plugincevirisi/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -340,7 +340,7 @@ app.get("/sistemler/:id", (req, res) => {
     let member = req.user ? guild.members.cache.get(req.user.id) : null;
     if (
       member &&
-      (member.roles.cache.has(IDler.sistemlerrolü) ||
+      (member.roles.cache.has(IDler.plugincevirisirolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
@@ -365,15 +365,15 @@ app.get("/sistemler/:id", (req, res) => {
     res.redirect("/");
   }
 });
-app.get("/sistemler", (req, res) => {
-  var data = db.sistemler.get("kodlar");
+app.get("/plugincevirisi", (req, res) => {
+  var data = db.plugincevirisi.get("kodlar");
   data = sortData(data);
-  res.render("sistemler", {
+  res.render("plugincevirisi", {
     user: req.user,
     kodlar: data
   });
 });
-app.get("/sistemler/:id", (req, res) => {
+app.get("/plugincevirisi/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -391,14 +391,14 @@ app.get("/sistemler/:id", (req, res) => {
 
   var id = req.params.id;
   if (!id) req.redirect("/");
-  let data = db.sistemler.get("kodlar");
+  let data = db.plugincevirisi.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
     let guild = client.guilds.cache.get(IDler.sunucuID);
     let member = req.user ? guild.members.cache.get(req.user.id) : null;
     if (
       member &&
-      (member.roles.cache.has(IDler.sistemlerrolü) ||
+      (member.roles.cache.has(IDler.plugincevirisirolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
@@ -456,7 +456,7 @@ app.get("/altyapi/:id", (req, res) => {
     let member = req.user ? guild.members.cache.get(req.user.id) : null;
     if (
       member &&
-      (member.roles.cache.has(IDler.hazirSistemlerRolü) ||
+      (member.roles.cache.has(IDler.altyapiRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
