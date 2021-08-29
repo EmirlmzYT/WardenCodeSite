@@ -35,7 +35,7 @@ const IDler = {
   kodPaylaşımcıRolü: "862085946726809620",
   boosterRolü: "765467131553775627",
   kodPaylaşamayacakRoller: ["765467283899547668", "765467283899547668"],
-  hazırAltyapılarRolü: "765467132481241108",
+  altyapiRolü: "765467132481241108",
   hazırSistemlerRolü: "765467132481241108",
   sistemlerrolü: "765467132481241108",
   htmlKodlarRolü: "862085946726809620",
@@ -174,7 +174,18 @@ app.get("/javascript/:id", (req, res) => {
     res.render("kod", {
       user: req.user,
       kod: code
-    });
+    });  
+  } else {
+    res.redirect(
+        url.format({
+          pathname: "/hata",
+          query: {
+            statuscode: 501,
+            message: "Bu kodu görmek için gerekli yetkiniz yok."
+          }
+        })
+      );
+    }
   } else {
     res.redirect("/");
   }
@@ -412,15 +423,15 @@ app.get("/sistemler/:id", (req, res) => {
     res.redirect("/");
   }
 });
-app.get("/hazir", (req, res) => {
-  var data = db.hazir.get("kodlar");
+app.get("/altyapi", (req, res) => {
+  var data = db.altyapi.get("kodlar");
   data = sortData(data);
-  res.render("hazir", {
+  res.render("altyapi", {
     user: req.user,
     kodlar: data
   });
 });
-app.get("/hazir/:id", (req, res) => {
+app.get("/altyapi/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -438,7 +449,7 @@ app.get("/hazir/:id", (req, res) => {
 
   var id = req.params.id;
   if (!id) req.redirect("/");
-  let data = db.hazir.get("kodlar");
+  let data = db.altyapi.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
     let guild = client.guilds.cache.get(IDler.sunucuID);
