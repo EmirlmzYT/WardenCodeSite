@@ -36,7 +36,7 @@ const IDler = {
   boosterRolü: "765467131553775627",
   kodPaylaşamayacakRoller: ["765467283899547668", "765467283899547668"],
   hazırAltyapılarRolü: "765467132481241108",
-  altyapiSistemlerRolü: "765467132481241108",
+  hazırSistemlerRolü: "765467132481241108",
   sistemlerrolü: "765467132481241108",
   htmlKodlarRolü: "862085946726809620",
   bdfdKodlarRolü: "862085946726809620",
@@ -402,15 +402,15 @@ app.get("/sistemler/:id", (req, res) => {
     res.redirect("/");
   }
 });
-app.get("/altyapi", (req, res) => {
+app.get("/hazır", (req, res) => {
   var data = db.hazir.get("kodlar");
   data = sortData(data);
-  res.render("altyapi", {
+  res.render("hazır", {
     user: req.user,
     kodlar: data
   });
 });
-app.get("/altyapi/:id", (req, res) => {
+app.get("/hazır/:id", (req, res) => {
   if (
     !req.user ||
     !client.guilds.cache.get(IDler.sunucuID).members.cache.has(req.user.id)
@@ -428,14 +428,14 @@ app.get("/altyapi/:id", (req, res) => {
 
   var id = req.params.id;
   if (!id) req.redirect("/");
-  let data = db.altyapi.get("kodlar");
+  let data = db.hazır.get("kodlar");
   var code = findCodeToId(data, id);
   if (code) {
     let guild = client.guilds.cache.get(IDler.sunucuID);
     let member = req.user ? guild.members.cache.get(req.user.id) : null;
     if (
       member &&
-      (member.roles.cache.has(IDler.altyapiSistemlerRolü) ||
+      (member.roles.cache.has(IDler.hazırSistemlerRolü) ||
         member.roles.cache.has(IDler.boosterRolü) ||
         member.roles.cache.has(IDler.sahipRolü) ||
         member.roles.cache.has(IDler.kodPaylaşımcıRolü) ||
