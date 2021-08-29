@@ -802,7 +802,7 @@ client.login(process.env.token);
 
 client.on("ready", () => {
   const listener = app.listen(process.env.PORT, function() {
-    client.user.setActivity(`wardencode.glitch.me`, { type:"WATCHING" })
+    client.user.setActivity(`youtube/Emirlmz`, { type:"STREAMING" })
     console.log("Proje Hazır!");
   });
 });
